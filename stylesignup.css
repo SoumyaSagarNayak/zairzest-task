@@ -1,0 +1,281 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+p{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #0f1014, #34204e);
+}
+
+.container {
+    display: flex;
+    max-width: 1440px; /* Increased from 1200px to 1440px */
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.left-section {
+    background: radial-gradient(circle at top left, #3a787b, transparent 40%), 
+                radial-gradient(circle at bottom right, #320e32, transparent 40%),
+                #1b1b1f; /* Base dark color */
+    padding: 96px; /* Increased from 80px to 96px */
+    color: white;
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+ }
+
+.left-section h1 {
+    font-size: 57.6px; /* Increased from 48px to 57.6px */
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.left-section span {
+    color: #e34984;
+}
+
+.left-section p {
+    margin-top: 24px; /* Increased from 20px to 24px */
+    font-size: 21.6px; /* Increased from 18px to 21.6px */
+    max-width: 480px; /* Increased from 400px to 480px */
+}
+
+.dots {
+    margin-top: 48px; /* Increased from 40px to 48px */
+}
+
+.dot {
+    width: 18px; /* Increased from 15px to 18px */
+    height: 18px; /* Increased from 15px to 18px */
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 12px; /* Increased from 10px to 12px */
+}
+
+.dot.pink {
+    background-color: #cc2867;
+}
+
+.dot.white {
+    background-color: #fff;
+}
+
+.dot.purple {
+    background-color: #7526c5;
+}
+
+.right-section {
+    padding: 72px; /* Increased from 60px to 72px */
+    flex: 1;
+    background-color: #f8f9fd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right-section h2 {
+    color: #1a2e5b;
+    font-size: 36px; /* Increased from 30px to 36px */
+    margin-bottom: 12px; /* Increased from 10px to 12px */
+}
+
+.right-section p {
+    color: #555;
+    margin-bottom: 24px; /* Increased from 20px to 24px */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    padding: 14.4px; /* Increased from 12px to 14.4px */
+    margin-bottom: 18px; /* Increased from 15px to 18px */
+    font-size: 19.2px; /* Increased from 16px to 19.2px */
+    border-radius: 6px; /* Increased from 5px to 6px */
+    border: 1px solid #ccc;
+}
+
+input[type="password"] {
+    position: relative;
+}
+
+form p {
+    color: #333;
+    font-size: 16.8px; /* Increased from 14px to 16.8px */
+}
+
+form p a {
+    color: #e34984; /* Red color for the link */
+    text-decoration: none;
+}
+
+form p a:hover {
+    text-decoration: underline;
+}
+
+button {
+    padding: 16px; /* Adjusted padding if needed */
+    border: none;
+    cursor: pointer;
+    font-size: 18px; /* Increased from 16px to 18px */
+    margin-top: 12px;
+    border-radius: 6px;
+}
+
+/* Updated styles for button group */
+.button-group {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Increased gap between buttons and "or" */
+    margin-top: 20px; /* Space between form fields and button group */
+}
+
+.or {
+    font-size: 18px; /* Same as button font size */
+    color: #333; /* Color for the "or" text */
+    margin: 0 20px; /* Adjust space around "or" to center it */
+}
+
+.btn.signup {
+    background-color: #1a2e5b;
+    color: white;
+}
+
+.btn.google {
+    background-color: white;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.btn.google img {
+    margin-left: 12px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .left-section {
+        padding: 60px; /* Increased from 50px to 60px */
+        text-align: center;
+    }
+
+    .left-section h1 {
+        font-size: 48px; /* Increased from 40px to 48px */
+    }
+
+    .left-section p {
+        margin: 24px auto; /* Increased from 20px to 24px */
+    }
+
+    .right-section {
+        padding: 48px; /* Increased from 40px to 48px */
+        width: 100%;
+    }
+
+    .right-section h2 {
+        font-size: 31.2px; /* Increased from 26px to 31.2px */
+        text-align: center;
+    }
+
+    .button-group {
+        flex-direction: column; /* Stack buttons and "or" vertically on smaller screens */
+    }
+
+    .or {
+        margin: 10px 0; /* Space between stacked buttons and "or" */
+    }
+}
+
+@media (max-width: 768px) {
+    .left-section {
+        padding: 48px; /* Increased from 40px to 48px */
+    }
+
+    .left-section h1 {
+        font-size: 38.4px; /* Increased from 32px to 38.4px */
+    }
+
+    .left-section p {
+        font-size: 19.2px; /* Increased from 16px to 19.2px */
+    }
+
+    .right-section {
+        padding: 36px; /* Increased from 30px to 36px */
+    }
+
+    form input {
+        padding: 12px; /* Increased from 10px to 12px */
+    }
+
+    button {
+        padding: 14.4px; /* Increased from 12px to 14.4px */
+    }
+
+    .btn.signup {
+        font-size: 14px; /* Decreased from 16.8px to 14px */
+    }
+
+    .btn.google {
+        font-size: 14px; /* Decreased from 16.8px to 14px */
+    }
+
+    .button-group {
+        flex-direction: column; /* Stack buttons and "or" vertically on smaller screens */
+    }
+
+    .or {
+        margin: 10px 0; /* Space between stacked buttons and "or" */
+    }
+}
+
+@media (max-width: 480px) {
+    .left-section h1 {
+        font-size: 33.6px; /* Increased from 28px to 33.6px */
+    }
+
+    .left-section p {
+        font-size: 16px; /* Increased from 14px to 16px */
+        max-width: 100%;
+    }
+
+    .right-section h2 {
+        font-size: 26.4px; /* Increased from 22px to 26.4px */
+    }
+
+    input {
+        font-size: 16px; /* Increased from 14px to 16px */
+    }
+
+    button {
+        font-size: 16px; /* Increased from 14px to 16px */
+        padding: 12px; /* Increased from 10px to 12px */
+    }
+
+    .button-group {
+        flex-direction: column; /* Stack buttons and "or" vertically on smaller screens */
+    }
+
+    .or {
+        margin: 8px 0; /* Space between stacked buttons and "or" */
+    }
+}
