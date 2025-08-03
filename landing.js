@@ -266,4 +266,3 @@ style.textContent = `
         z-index: 10000;
     }
 `;
-document.head.appendChild(style);

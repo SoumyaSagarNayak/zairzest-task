@@ -123,7 +123,35 @@ body {
 .nav-controls {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.logout-btn:hover {
+    background: #d1246f;
+    transform: translateY(-1px);
+}
+
+.logout-icon {
+    font-size: 16px;
+}
+
+.logout-text {
+    font-size: 14px;
 }
 
 .language-selector {
