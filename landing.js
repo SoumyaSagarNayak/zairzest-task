@@ -266,3 +266,25 @@ style.textContent = `
         z-index: 10000;
     }
 `;
+// Login Form Handling
+const loginForm = document.querySelector('#login-form');
+
+if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // 🔒 Dummy Credentials (you can replace with real ones later)
+        if (username === 'admin' && password === 'admin') {
+            // ✅ Store login state
+            localStorage.setItem('isLoggedIn', 'true');
+
+            // 🚀 Redirect to landing page
+            window.location.href = 'landing.html';
+        } else {
+            alert('Invalid username or password');
+        }
+    });
+}
