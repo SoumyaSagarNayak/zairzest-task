@@ -719,4 +719,17 @@ body {
         padding: 12px 24px;
         font-size: 14px;
     }
+    
+    .logout-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .logout-text {
+        display: none;
+    }
+    
+    .logout-icon {
+        font-size: 14px;
+    }
 }
