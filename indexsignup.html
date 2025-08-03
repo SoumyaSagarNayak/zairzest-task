@@ -29,15 +29,65 @@
                 <input type="text" placeholder="Name">
                 <input type="email" placeholder="Email here">
                <input type="password"   placeholder="Password                                                          &#128065">
-                <p>Already a Member Yet? <a href="#">Sign In</a></p>
+                <p>Already a Member Yet? <a href="index.html">Sign In</a></p>
                 <div class="button-group">
-                    <button class="btn signup">Sign Up</button>
+                    <button class="btn signup" onclick="handleSignup()">Sign Up</button>
                     <span class="or">or</span>
                     <button class="btn google">Sign up with <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png" alt="Google" width="20"></button>
                 </div>
             </form>
         </div>
     </div>
-    <!-- <a href="./indexlogin.html">click</a> -->
+    
+    <script>
+        function handleSignup() {
+            // Get form values
+            const name = document.querySelector('input[type="text"]').value;
+            const email = document.querySelector('input[type="email"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+            
+            // Simple validation
+            if (!name || !email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Simple email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Password strength validation
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long');
+                return;
+            }
+            
+            // Simulate signup process
+            const signupBtn = document.querySelector('.btn.signup');
+            const originalText = signupBtn.textContent;
+            signupBtn.textContent = 'Signing up...';
+            signupBtn.disabled = true;
+            
+            setTimeout(() => {
+                // Store user data
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userEmail', email);
+                localStorage.setItem('userName', name);
+                
+                alert('Account created successfully! Welcome to Zairza!');
+                
+                // Redirect to landing page
+                window.location.href = 'landing.html';
+            }, 1500);
+        }
+        
+        // Check if user is already logged in
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'landing.html';
+        }
+    </script>
 </body>
 </html>

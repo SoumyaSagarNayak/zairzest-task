@@ -32,7 +32,7 @@
                 <p>Don't remember password? <a href="#">Reset Password</a></p>
                 <p>Not a member yet? <a href="indexsignup.html">Sign up</a></p>
                 <div class="button-group">
-                    <button class="btn signup">Login</button>
+                    <button class="btn signup" onclick="handleLogin()">Login</button>
                     <span class="or">or</span>
                     <button class="btn google">Sign in with<img src="https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png" alt="Google" width="20"></button>
                 </div>
@@ -40,5 +40,45 @@
         </div>
     </div>
     
+    <script>
+        function handleLogin() {
+            // Get form values
+            const email = document.querySelector('input[type="email"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+            
+            // Simple validation
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Simple email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Simulate login process
+            const loginBtn = document.querySelector('.btn.signup');
+            const originalText = loginBtn.textContent;
+            loginBtn.textContent = 'Logging in...';
+            loginBtn.disabled = true;
+            
+            setTimeout(() => {
+                // Store login status
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userEmail', email);
+                
+                // Redirect to landing page
+                window.location.href = 'landing.html';
+            }, 1500);
+        }
+        
+        // Check if user is already logged in
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'landing.html';
+        }
+    </script>
 </body>
 </html>
