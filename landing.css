@@ -761,10 +761,24 @@ body {
     }
     
     .logout-btn {
-        padding: 8px 14px;
+        padding: 10px 14px;
         font-size: 12px;
         border-radius: 20px;
         gap: 8px;
+        min-width: 44px;
+        min-height: 44px;
+        justify-content: center;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .logout-btn:hover {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(227, 73, 132, 0.4);
+    }
+    
+    .logout-btn:active {
+        transform: translateY(0) scale(0.95);
+        transition: all 0.1s ease;
     }
     
     .logout-text {
@@ -774,10 +788,48 @@ body {
     .logout-icon {
         width: 14px;
         height: 14px;
+        margin: 0;
     }
     
     .logout-icon svg {
         width: 14px;
         height: 14px;
+    }
+    
+    /* Mobile navigation improvements */
+    .nav-menu {
+        transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        backdrop-filter: blur(10px);
+    }
+    
+    .nav-menu.active {
+        left: 0;
+        animation: slideInRight 0.4s ease-out;
+    }
+    
+    .hamburger.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+        transition: transform 0.3s ease;
+    }
+    
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .hamburger.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+        transition: transform 0.3s ease;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
 }

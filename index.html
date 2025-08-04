@@ -49,36 +49,138 @@
             
             // Simple validation
             if (!email || !password) {
-                alert('Please fill in all fields');
+                showNotification('Please fill in all fields', 'error');
                 return;
             }
             
             // Simple email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address');
+                showNotification('Please enter a valid email address', 'error');
                 return;
             }
             
             // Simulate login process
             const loginBtn = document.querySelector('.btn.signup');
             const originalText = loginBtn.textContent;
-            loginBtn.textContent = 'Logging in...';
+            loginBtn.innerHTML = `
+                <span style="display: inline-flex; align-items: center; gap: 8px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite;">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6"></path>
+                    </svg>
+                    Logging in...
+                </span>
+            `;
             loginBtn.disabled = true;
+            loginBtn.style.opacity = '0.8';
+            
+            // Add smooth transition to page
+            document.body.style.transition = 'opacity 0.3s ease';
             
             setTimeout(() => {
                 // Store login status
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('userEmail', email);
                 
-                // Redirect to landing page
-                window.location.href = 'landing.html';
+                // Show success and redirect with smooth transition
+                showNotification('Login successful! Redirecting...', 'success');
+                document.body.style.opacity = '0';
+                
+                setTimeout(() => {
+                    window.location.href = 'landing.html';
+                }, 500);
             }, 1500);
+        }
+        
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    ${type === 'success' ? 
+                        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"></polyline></svg>' :
+                        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>'
+                    }
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            // Add notification styles
+            if (!document.querySelector('#notification-styles')) {
+                const styles = document.createElement('style');
+                styles.id = 'notification-styles';
+                styles.textContent = `
+                    .notification {
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        padding: 16px 20px;
+                        border-radius: 8px;
+                        color: white;
+                        z-index: 10000;
+                        transform: translateX(100%);
+                        animation: slideInNotification 0.3s ease-out forwards;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                    }
+                    
+                    .notification.success {
+                        background: linear-gradient(135deg, #4CAF50, #45a049);
+                    }
+                    
+                    .notification.error {
+                        background: linear-gradient(135deg, #f44336, #d32f2f);
+                    }
+                    
+                    .notification-content {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+                    
+                    @keyframes slideInNotification {
+                        to { transform: translateX(0); }
+                    }
+                    
+                    @keyframes spin {
+                        from { transform: rotate(0deg); }
+                        to { transform: rotate(360deg); }
+                    }
+                    
+                    @media (max-width: 480px) {
+                        .notification {
+                            top: 10px;
+                            right: 10px;
+                            left: 10px;
+                            transform: translateY(-100%);
+                            animation: slideDownNotification 0.3s ease-out forwards;
+                        }
+                        
+                        @keyframes slideDownNotification {
+                            to { transform: translateY(0); }
+                        }
+                    }
+                `;
+                document.head.appendChild(styles);
+            }
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove notification
+            setTimeout(() => {
+                notification.style.animation = 'slideInNotification 0.3s ease-out reverse';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
         }
         
         // Check if user is already logged in
         if (localStorage.getItem('isLoggedIn') === 'true') {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
             window.location.href = 'landing.html';
+            }, 100);
         }
     </script>
     <body>

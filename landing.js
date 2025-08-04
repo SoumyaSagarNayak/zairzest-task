@@ -4,39 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (logoutBtn) {
         logoutBtn.addEventListener('click', function() {
-            // Show confirmation dialog
-            const confirmLogout = confirm('Are you sure you want to logout?');
-            
-            if (confirmLogout) {
-                // Update button state
-                const originalHTML = logoutBtn.innerHTML;
-                logoutBtn.innerHTML = `
-                    <span class="logout-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="3"></circle>
-                            <path d="M12 1v6m0 6v6"></path>
-                        </svg>
-                    </span>
-                    <span class="logout-text">Logging out...</span>
-                `;
-                logoutBtn.disabled = true;
-                logoutBtn.style.opacity = '0.7';
-                
-                // Simulate logout process
-                setTimeout(() => {
-                    // Clear all stored data
-                    localStorage.removeItem('isLoggedIn');
-                    localStorage.removeItem('userEmail');
-                    localStorage.removeItem('userName');
-                    localStorage.removeItem('selectedLanguage');
-                    
-                    // Show success message
-                    alert('You have been successfully logged out!');
-                    
-                    // Redirect to login page
-                    window.location.href = 'index.html';
-                }, 1500);
-            }
+            // Show custom confirmation dialog with smooth animation
+            showLogoutConfirmation();
         });
     }
     
@@ -45,6 +14,279 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'index.html';
     }
 });
+
+function showLogoutConfirmation() {
+    // Create custom modal for better UX
+    const modal = document.createElement('div');
+    modal.className = 'logout-modal';
+    modal.innerHTML = `
+        <div class="logout-modal-content">
+            <div class="logout-modal-header">
+                <h3>Confirm Logout</h3>
+            </div>
+            <div class="logout-modal-body">
+                <p>Are you sure you want to logout?</p>
+            </div>
+            <div class="logout-modal-actions">
+                <button class="btn-cancel" onclick="closeLogoutModal()">Cancel</button>
+                <button class="btn-confirm" onclick="confirmLogout()">Logout</button>
+            </div>
+        </div>
+    `;
+    
+    // Add modal styles
+    const modalStyles = `
+        <style>
+            .logout-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                opacity: 0;
+                animation: fadeInModal 0.3s ease-out forwards;
+                backdrop-filter: blur(5px);
+            }
+            
+            .logout-modal-content {
+                background: var(--bg-color);
+                border-radius: 12px;
+                padding: 0;
+                max-width: 400px;
+                width: 90%;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                transform: scale(0.9) translateY(20px);
+                animation: slideInModal 0.3s ease-out 0.1s forwards;
+                overflow: hidden;
+            }
+            
+            .logout-modal-header {
+                padding: 20px 24px 16px;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .logout-modal-header h3 {
+                margin: 0;
+                color: var(--text-primary);
+                font-size: 18px;
+                font-weight: 600;
+            }
+            
+            .logout-modal-body {
+                padding: 20px 24px;
+            }
+            
+            .logout-modal-body p {
+                margin: 0;
+                color: var(--text-secondary);
+                line-height: 1.5;
+            }
+            
+            .logout-modal-actions {
+                padding: 16px 24px 24px;
+                display: flex;
+                gap: 12px;
+                justify-content: flex-end;
+            }
+            
+            .btn-cancel, .btn-confirm {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 6px;
+                font-size: 14px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                min-width: 80px;
+            }
+            
+            .btn-cancel {
+                background: var(--surface-color);
+                color: var(--text-primary);
+                border: 1px solid var(--border-color);
+            }
+            
+            .btn-cancel:hover {
+                background: var(--border-color);
+            }
+            
+            .btn-confirm {
+                background: linear-gradient(135deg, #e34984, #d1246f);
+                color: white;
+            }
+            
+            .btn-confirm:hover {
+                background: linear-gradient(135deg, #d1246f, #b91d5f);
+                transform: translateY(-1px);
+            }
+            
+            @keyframes fadeInModal {
+                to { opacity: 1; }
+            }
+            
+            @keyframes slideInModal {
+                to { 
+                    transform: scale(1) translateY(0);
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .logout-modal-content {
+                    width: 95%;
+                    margin: 20px;
+                }
+                
+                .logout-modal-actions {
+                    flex-direction: column-reverse;
+                }
+                
+                .btn-cancel, .btn-confirm {
+                    width: 100%;
+                }
+            }
+        </style>
+    `;
+    
+    document.head.insertAdjacentHTML('beforeend', modalStyles);
+    document.body.appendChild(modal);
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLogoutModal() {
+    const modal = document.querySelector('.logout-modal');
+    if (modal) {
+        modal.style.animation = 'fadeOutModal 0.2s ease-out forwards';
+        setTimeout(() => {
+            modal.remove();
+            document.body.style.overflow = '';
+        }, 200);
+    }
+}
+
+function confirmLogout() {
+    const logoutBtn = document.getElementById('logout-btn');
+    const modal = document.querySelector('.logout-modal');
+    
+    // Close modal first
+    if (modal) {
+        modal.remove();
+        document.body.style.overflow = '';
+    }
+    
+    // Update button state with smooth animation
+    if (logoutBtn) {
+        logoutBtn.classList.add('loading');
+        const originalHTML = logoutBtn.innerHTML;
+        
+        logoutBtn.innerHTML = `
+            <span class="logout-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M12 1v6m0 6v6"></path>
+                </svg>
+            </span>
+            <span class="logout-text">Logging out...</span>
+        `;
+        
+        // Add fade out effect to page
+        document.body.classList.add('fade-out');
+        
+        // Simulate logout process with smooth transition
+        setTimeout(() => {
+            // Clear all stored data
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('selectedLanguage');
+            
+            // Show success notification
+            showSuccessNotification('Successfully logged out!');
+            
+            // Redirect to login page with delay for smooth transition
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 800);
+        }, 1200);
+    }
+}
+
+function showSuccessNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'success-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20,6 9,17 4,12"></polyline>
+            </svg>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    // Add notification styles
+    const notificationStyles = `
+        <style>
+            .success-notification {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #4CAF50, #45a049);
+                color: white;
+                padding: 16px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+                z-index: 10001;
+                transform: translateX(100%);
+                animation: slideInNotification 0.3s ease-out forwards;
+            }
+            
+            .notification-content {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 14px;
+                font-weight: 500;
+            }
+            
+            @keyframes slideInNotification {
+                to { transform: translateX(0); }
+            }
+            
+            @keyframes fadeOutModal {
+                to { opacity: 0; }
+            }
+            
+            @media (max-width: 480px) {
+                .success-notification {
+                    top: 10px;
+                    right: 10px;
+                    left: 10px;
+                    transform: translateY(-100%);
+                    animation: slideDownNotification 0.3s ease-out forwards;
+                }
+                
+                @keyframes slideDownNotification {
+                    to { transform: translateY(0); }
+                }
+            }
+        </style>
+    `;
+    
+    document.head.insertAdjacentHTML('beforeend', notificationStyles);
+    document.body.appendChild(notification);
+    
+    // Auto remove notification
+    setTimeout(() => {
+        notification.style.animation = 'slideInNotification 0.3s ease-out reverse';
+        setTimeout(() => notification.remove(), 300);
+    }, 2000);
+}
 
 // Theme Toggle Functionality
 const themeToggle = document.getElementById('theme-toggle');
