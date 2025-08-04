@@ -1,3 +1,51 @@
+// Logout functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const logoutBtn = document.getElementById('logout-btn');
+    
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+            // Show confirmation dialog
+            const confirmLogout = confirm('Are you sure you want to logout?');
+            
+            if (confirmLogout) {
+                // Update button state
+                const originalHTML = logoutBtn.innerHTML;
+                logoutBtn.innerHTML = `
+                    <span class="logout-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6"></path>
+                        </svg>
+                    </span>
+                    <span class="logout-text">Logging out...</span>
+                `;
+                logoutBtn.disabled = true;
+                logoutBtn.style.opacity = '0.7';
+                
+                // Simulate logout process
+                setTimeout(() => {
+                    // Clear all stored data
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('userEmail');
+                    localStorage.removeItem('userName');
+                    localStorage.removeItem('selectedLanguage');
+                    
+                    // Show success message
+                    alert('You have been successfully logged out!');
+                    
+                    // Redirect to login page
+                    window.location.href = 'index.html';
+                }, 1500);
+            }
+        });
+    }
+    
+    // Check if user is logged in, if not redirect to login
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+        window.location.href = 'index.html';
+    }
+});
+
 // Theme Toggle Functionality
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.querySelector('.theme-icon');
@@ -266,25 +314,3 @@ style.textContent = `
         z-index: 10000;
     }
 `;
-// Login Form Handling
-const loginForm = document.querySelector('#login-form');
-
-if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        // 🔒 Dummy Credentials (you can replace with real ones later)
-        if (username === 'admin' && password === 'admin') {
-            // ✅ Store login state
-            localStorage.setItem('isLoggedIn', 'true');
-
-            // 🚀 Redirect to landing page
-            window.location.href = 'landing.html';
-        } else {
-            alert('Invalid username or password');
-        }
-    });
-}
