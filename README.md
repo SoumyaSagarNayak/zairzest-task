@@ -39,8 +39,11 @@ To run this project locally:
 ```bash
 git clone https://github.com/SoumyaSagarNayak/zairzest-task.git
 cd zairzest-task
-open index.html
 
+# Simply open index.html in your web browser
+# No npm install required - this is a plain HTML/CSS/JS project
+open index.html
+# Or double-click index.html in your file explorer
 ```
 📦 Folder Structure
 <pre>
