@@ -40,10 +40,17 @@ To run this project locally:
 git clone https://github.com/SoumyaSagarNayak/zairzest-task.git
 cd zairzest-task
 
+# Option 1: Simple file opening (no server needed)
 # Simply open index.html in your web browser
-# No npm install required - this is a plain HTML/CSS/JS project
 open index.html
-# Or double-click index.html in your file explorer
+
+# Option 2: Using a local development server (recommended)
+npm start
+# This will start a local server at http://localhost:3000
+
+# Option 3: Using live-server for development
+npm run dev
+# This provides live reload functionality
 ```
 📦 Folder Structure
 <pre>
