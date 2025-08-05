@@ -34,34 +34,49 @@ A visually captivating and responsive website built as part of the **ZairZest re
 
 ## 🚀 Getting Started
 
-To run this project locally:
+### Local Development
 
 ```bash
-git clone https://github.com/SoumyaSagarNayak/zairzest-task.git
-cd zairzest-task
+# Clone the repository
+git clone https://github.com/SoumyaSagarNayak/zairza-technical-society.git
+cd zairza-technical-society
 
-# Option 1: Simple file opening (no server needed)
-# Simply open index.html in your web browser
-open index.html
+# Install dependencies (optional, for development servers)
+npm install
 
-# Option 2: Using a local development server (recommended)
-npm start
-# This will start a local server at http://localhost:3000
-
-# Option 3: Using live-server for development
+# Start development server with live reload
 npm run dev
-# This provides live reload functionality
+
+# Or start simple HTTP server
+npm start
+
+# Or simply open index.html in your browser (no server needed)
+open index.html
 ```
+
+### Vercel Deployment
+
+This project is optimized for Vercel deployment:
+
+1. **Connect your GitHub repository** to Vercel
+2. **Deploy automatically** - No build configuration needed
+3. **Custom domains** and **SSL** are handled automatically
+4. **Routes are configured** for clean URLs
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/SoumyaSagarNayak/zairza-technical-society)
+
 📦 Folder Structure
 <pre>
-zairzest-task/
+zairza-technical-society/
 ├── assets/
 │   └── images, icons, and creatives
 ├── index.html
+├── indexsignup.html
+├── landing.html
 ├── styles.css
+├── stylesignup.css
+├── landing.css
 ├── script.js
-└── README.md
-  </pre>
 
 
 

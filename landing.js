@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check if user is logged in, if not redirect to login
     if (localStorage.getItem('isLoggedIn') !== 'true') {
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.3s ease';
+        setTimeout(() => {
         window.location.href = 'index.html';
     }
 });
@@ -209,10 +212,12 @@ function confirmLogout() {
             // Show success notification
             showSuccessNotification('Successfully logged out!');
             
+            document.body.style.transition = 'opacity 0.3s ease';
+            document.body.style.transition = 'opacity 0.3s ease';
             // Redirect to login page with delay for smooth transition
             setTimeout(() => {
                 window.location.href = 'index.html';
-            }, 800);
+            }, 500);
         }, 1200);
     }
 }

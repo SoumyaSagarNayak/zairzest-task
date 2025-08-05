@@ -35,6 +35,23 @@ body {
     color: var(--text-primary);
     background-color: var(--bg-color);
     transition: var(--transition);
+    opacity: 1;
+}
+
+/* Page load animation */
+body:not(.loaded) {
+    opacity: 0;
+}
+
+body.loaded {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Fade out animation for page transitions */
+body.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .container {
