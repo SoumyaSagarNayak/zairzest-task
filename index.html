@@ -1,200 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Zairza Landing Page</title>
-    <link rel="stylesheet" href="stylesignup.css">
-</head>
-<body>
-    <div class="container">
-        <div class="left-section">
-            <h1>Experience the Future Tech with <span>zairza</span></h1>
-            <p>Release all your stress with the exciting Tech and Fun events in the most awaited fest. Zairfest 2.0 presented by Zairza.</p>
-            <div class="dots">
-<div></div>
-<div></div>
-<div></div>
-
-                <span class="dot white"></span>
-                <span class="dot pink"></span>
-                <span class="dot purple"></span>
-            </div>
-        </div>
-        <div class="right-section">
-            <h2>Experience the Future Tech</h2>
-            <p>Register for Zairfest 2.0 </p>
-            <form onsubmit="handleSignup(event)">
-
-                <input type="text" placeholder="Name">
-                <input type="email" placeholder="Email here">
-               <input type="password"   placeholder="Password                                                          &#128065">
-                <p>Already a Member Yet? <a href="index.html">Sign In</a></p>
-                <div class="button-group">
-                    <button class="btn signup" onclick="handleSignup()">Sign Up</button>
-                    <span class="or">or</span>
-                    <button class="btn google">Sign up with <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png" alt="Google" width="20"></button>
-                </div>
-            </form>
-        </div>
-    </div>
-    
-    <script>
-        function handleSignup() {
-            // Get form values
-            const name = document.querySelector('input[type="text"]').value;
-            const email = document.querySelector('input[type="email"]').value;
-            const password = document.querySelector('input[type="password"]').value;
-            
-            // Simple validation
-            if (!name || !email || !password) {
-                showNotification('Please fill in all fields', 'error');
-                return;
-            }
-            
-            // Simple email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                showNotification('Please enter a valid email address', 'error');
-                return;
-            }
-            
-            // Password strength validation
-            if (password.length < 6) {
-                showNotification('Password must be at least 6 characters long', 'error');
-                return;
-            }
-            
-            // Simulate signup process
-            const signupBtn = document.querySelector('.btn.signup');
-            const originalText = signupBtn.textContent;
-            signupBtn.innerHTML = `
-                <span style="display: inline-flex; align-items: center; gap: 8px;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite;">
-                        <circle cx="12" cy="12" r="3"></circle>
-                        <path d="M12 1v6m0 6v6"></path>
-                    </svg>
-                    Signing up...
-                </span>
-            `;
-            signupBtn.disabled = true;
-            signupBtn.style.opacity = '0.8';
-            
-            // Add smooth transition to page
-            document.body.style.transition = 'opacity 0.3s ease';
-            
-            setTimeout(() => {
-                // Store user data
-                localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('userEmail', email);
-                localStorage.setItem('userName', name);
-                
-                showNotification('Account created successfully! Welcome to Zairza!', 'success');
-                document.body.style.opacity = '0';
-                
-                setTimeout(() => {
-                    window.location.href = 'landing.html';
-                }, 500);
-            }, 1500);
-        }
-        
-        function showNotification(message, type) {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <div class="notification-content">
-                    ${type === 'success' ? 
-                        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"></polyline></svg>' :
-                        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>'
-                    }
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            // Add notification styles
-            if (!document.querySelector('#notification-styles')) {
-                const styles = document.createElement('style');
-                styles.id = 'notification-styles';
-                styles.textContent = `
-                    .notification {
-                        position: fixed;
-                        top: 20px;
-                        right: 20px;
-                        padding: 16px 20px;
-                        border-radius: 8px;
-                        color: white;
-                        z-index: 10000;
-                        transform: translateX(100%);
-                        animation: slideInNotification 0.3s ease-out forwards;
-                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-                    }
-                    
-                    .notification.success {
-                        background: linear-gradient(135deg, #4CAF50, #45a049);
-                    }
-                    
-                    .notification.error {
-                        background: linear-gradient(135deg, #f44336, #d32f2f);
-                    }
-                    
-                    .notification-content {
-                        display: flex;
-                        align-items: center;
-                        gap: 10px;
-                        font-size: 14px;
-                        font-weight: 500;
-                    }
-                    
-                    @keyframes slideInNotification {
-                        to { transform: translateX(0); }
-                    }
-                    
-                    @keyframes spin {
-                        from { transform: rotate(0deg); }
-                        to { transform: rotate(360deg); }
-                    }
-                    
-                    @media (max-width: 480px) {
-                        .notification {
-                            top: 10px;
-                            right: 10px;
-                            left: 10px;
-                            transform: translateY(-100%);
-                            animation: slideDownNotification 0.3s ease-out forwards;
-                        }
-                        
-                        @keyframes slideDownNotification {
-                            to { transform: translateY(0); }
-                        }
-                    }
-                `;
-                document.head.appendChild(styles);
-            }
-            
-            document.body.appendChild(notification);
-            
-            // Auto remove notification
-            setTimeout(() => {
-                notification.style.animation = 'slideInNotification 0.3s ease-out reverse';
-                setTimeout(() => notification.remove(), 300);
-            }, 3000);
-        }
-        
-        // Check if user is already logged in
-        if (localStorage.getItem('isLoggedIn') === 'true') {
-            // Add smooth fade transition
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.3s ease';
-            setTimeout(() => {
-            window.location.href = 'landing.html';
-            }, 100);
-        }
-    </script>
-    <body>
-    <!-- all your HTML content -->
-    <script src="landing.js"></script>
-</body>
-
-</body>
-</html>
+{
+  "name": "zairza-technical-society",
+  "version": "1.0.0",
+  "description": "Zairza Technical Society website - A cult for OUTRians who want to be ahead in the game",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -o",
+    "dev": "npx live-server --port=3000 --open=index.html",
+    "build": "echo 'Static site ready for deployment'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "zairza",
+    "technical-society",
+    "outr",
+    "robotics",
+    "software",
+    "design",
+    "html",
+    "css",
+    "javascript",
+    "responsive",
+    "dark-mode",
+    "multi-language"
+  ],
+  "author": "Soumya Sagar Nayak <soumyasagarnayak351@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SoumyaSagarNayak/zairzest-task.git"
+  },
+  "homepage": "https://soumyasagarnayak.github.io/zairzest-task/",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

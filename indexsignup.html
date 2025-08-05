@@ -183,16 +183,23 @@
         
         // Check if user is already logged in
         if (localStorage.getItem('isLoggedIn') === 'true') {
+            // Add smooth fade transition
             document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
             setTimeout(() => {
-            window.location.href = 'landing.html';
-            }, 100);
+                window.location.href = 'landing.html';
+            }, 300);
         }
+        
+        // Add smooth page load animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
     </script>
-    <body>
-    <!-- all your HTML content -->
-    <script src="landing.js"></script>
-</body>
 
 </body>
 </html>

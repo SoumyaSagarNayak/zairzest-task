@@ -6,9 +6,10 @@
   "scripts": {
     "start": "npx http-server . -p 3000 -o",
     "dev": "npx live-server --port=3000 --open=index.html",
-    "build": "echo 'No build process needed for static HTML/CSS/JS project'",
+    "build": "echo 'Static site ready for deployment'",
     "test": "echo 'No tests specified'",
-    "serve": "npx http-server . -p 8080"
+    "serve": "npx http-server . -p 8080",
+    "vercel-build": "echo 'No build step required for static site'"
   },
   "keywords": [
     "zairza",
