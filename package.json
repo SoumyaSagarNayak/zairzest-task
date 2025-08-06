@@ -1,0 +1,15 @@
+{
+  "name": "zairza-technical-society",
+  "version": "1.0.0",
+  "description": "Zairza Technical Society website using HTML, CSS, and JavaScript",
+  "scripts": {
+    "start": "serve .",
+    "build": "echo 'Static site, no build required'",
+    "preview": "serve ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "serve": "latest"
+  },
+  "type": "module"
+}
