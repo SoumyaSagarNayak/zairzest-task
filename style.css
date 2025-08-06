@@ -1,0 +1,347 @@
+:root {
+  --primary: #1E3A8A;
+  --primary-light: #3B82F6;
+  --secondary: #F59E0B;
+  --secondary-light: #10B981;
+  --neutral-100: #F3F4F6;
+  --neutral-900: #111827;
+  --success: #10B981;
+  --error: #EF4444;
+  --text: #111827;
+  --background: #FFFFFF;
+  --card-bg: #F3F4F6;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+[data-theme="dark"] {
+  --primary: #3B82F6;
+  --primary-light: #1E3A8A;
+  --secondary: #FBBF24;
+  --secondary-light: #34D399;
+  --neutral-100: #1F2937;
+  --neutral-900: #F3F4F6;
+  --text: #F3F4F6;
+  --background: #111827;
+  --card-bg: #1F2937;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: var(--background);
+  transition: var(--transition);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  background: var(--primary);
+  color: var(--neutral-100);
+  padding: 1rem 0;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links li a {
+  color: var(--neutral-100);
+  text-decoration: none;
+  font-size: clamp(14px, 1.5vw, 16px);
+  transition: var(--transition);
+}
+
+.nav-links li a:hover {
+  color: var(--secondary);
+}
+
+.language-dropdown {
+  background: var(--neutral-100);
+  color: var(--neutral-900);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: clamp(14px, 1.5vw, 16px);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.language-dropdown:hover {
+  background: var(--secondary);
+  color: var(--neutral-100);
+}
+
+.theme-toggle {
+  background: var(--secondary);
+  color: var(--neutral-100);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: clamp(14px, 1.5vw, 16px);
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  background: var(--secondary-light);
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: clamp(14px, 1.5vw, 16px);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: var(--primary-light);
+  color: var(--neutral-100);
+}
+
+.btn-primary:hover {
+  background: var(--primary);
+}
+
+.btn-secondary {
+  background: var(--error);
+  color: var(--neutral-100);
+}
+
+.btn-secondary:hover {
+  background: #DC2626;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: var(--neutral-100);
+  transition: var(--transition);
+}
+
+.main {
+  padding: 2rem 0;
+}
+
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px);
+}
+
+.login-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: clamp(14px, 1.5vw, 16px);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  padding: 0.75rem;
+  border: 1px solid var(--neutral-900);
+  border-radius: 4px;
+  font-size: clamp(14px, 1.5vw, 16px);
+  transition: var(--transition);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 5px var(--primary-light);
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: var(--neutral-100);
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(24px, 4vw, 48px);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: clamp(16px, 2vw, 20px);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.about, .wings, .location {
+  padding: 4rem 0;
+}
+
+.about h2, .wings h2, .location h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(20px, 3vw, 36px);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.wings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.wing-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.wing-card:hover {
+  transform: translateY(-5px);
+}
+
+.wing-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.wing-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  margin-bottom: 1rem;
+}
+
+.footer {
+  background: var(--primary);
+  color: var(--neutral-100);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: var(--primary);
+    padding: 1rem;
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  .hero {
+    padding: 2rem 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(20px, 3.5vw, 36px);
+  }
+
+  .hero p {
+    font-size: clamp(14px, 1.8vw, 16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .login-card {
+    padding: 1.5rem;
+  }
+
+  .wings-grid {
+    grid-template-columns: 1fr;
+  }
+}
