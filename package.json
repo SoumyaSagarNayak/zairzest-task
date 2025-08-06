@@ -1,0 +1,10 @@
+@@ .. @@
+   "scripts": {
+     "start": "npx http-server . -p 3000 -c-1",
+     "dev": "npx live-server --port=8080 --host=localhost --open=/index.html",
+     "serve": "npx http-server . -p 8080 -c-1",
+-    "build": "echo 'This is a static site - no build process needed'",
++    "build": "echo 'Static site ready for deployment'",
++    "vercel-build": "echo 'Vercel build complete'",
+     "test": "echo 'No tests specified'"
+   },
