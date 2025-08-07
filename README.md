@@ -1,41 +1,83 @@
-# Zairza Technical Society Website
+# 🌐 ZairZest Task Web Project
 
-A modern, responsive website for Zairza Technical Society, built using HTML, CSS, and JavaScript. The site features a login page, a landing page with information about the society, and a dark/light mode toggle. It is optimized for deployment on Vercel as a static site.
+![Status](https://img.shields.io/badge/status-Completed-00C853?style=flat-square)  
+A visually captivating and responsive website built as part of the **ZairZest recruitment task**. This project focuses on delivering a smooth user experience, clean UI, and aesthetic layout with modern frontend technologies.
 
-## Features
-- **Responsive Design**: Optimized for mobile, tablet, and desktop.
-- **Dark/Light Mode**: Smooth theme toggle with local storage persistence.
-- **Login/Logout**: Basic authentication with local storage.
-- **Language Dropdown**: Placeholder options for English, Hindi, and Odia.
-- **Landing Page**: Highlights Zairza’s three wings (Robotics, Software, Design), history, and location with a Google Maps iframe.
-- **Smooth Animations**: CSS transitions for hover states, theme toggle, and hamburger menu.
+---
 
-## Project Structure
-- `index.html`: Login page.
-- `landing.html`: Main content page after login.
-- `style.css`: Global styles with responsive design and dark/light mode support.
-- `scripts/script.js`: JavaScript for login/logout, theme toggle, and hamburger menu.
-- `assets/logo.png`: Zairza logo.
+## ✨ Demo
 
-## Getting Started
-1. Clone the repository.
-2. Install dependencies: `npm install`.
-3. Run locally: `npm start` (uses `serve` to host the static site).
-4. Deploy to Vercel: Push to a Git repository and link to Vercel for automatic deployment.
+🔗 **Live Preview**: [Click here to visit](https://soumyasagarnayak.github.io/zairzest-task/)
 
-## Deployment
-The site is a static HTML/CSS/JS project, making it ideal for Vercel deployment. Ensure all files are in the root directory or properly referenced in `/assets` and `/scripts`.
+---
 
-## Color Palette
-- **Primary**: #1E3A8A, #3B82F6
-- **Secondary**: #F59E0B, #10B981
-- **Neutrals**: #F3F4F6 to #111827
-- **Semantic**: Success (#10B981), Error (#EF4444)
+## 📸 Features
 
-## Typography
-- **Headings**: Poppins, bold and modern.
-- **Body**: Inter, clean and readable.
-- **Type Scale**: Responsive with `clamp()` for fluid typography.
+- 🎨 **Sleek Design** – Minimal and modern with a nature-inspired color palette  
+- 🧭 **Responsive Layout** – Optimized for mobile, tablet, and desktop  
+- ⚙️ **Functional Components** – Interactive sections, dropdowns, profile builder & more  
+- 🖼️ **Image Grid & Creator Section** – Showcase of visuals & creators with dynamic UI  
+- 📁 **Easy Navigation** – Smooth scroll and clean navbar design  
 
-## License
-© 2025 Zairza Technical Society. All rights reserved.
+---
+
+## 💻 Tech Stack
+
+| Frontend       | UI/UX Tools  |
+|----------------|--------------|
+| HTML5          | Figma 🎨     |
+| CSS3           | Vercel 🚀    |
+| JavaScript     | VS Code 🖥️   |
+| Tailwind CSS   | GitHub 💻    |
+
+---
+
+## 🚀 Getting Started
+
+### 🛠️ Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/SoumyaSagarNayak/zairzest-task.git
+cd zairzest-task
+
+# (Optional) If using a dev server
+npm install
+
+# Start dev server
+npm run dev
+
+# Or simply open index.html in your browser
+open index.html
+```
+📁 Folder Structure
+<pre>
+zairzest-task/
+├── assets/              # images, icons, media
+├── index.html           # main landing page
+├── indexsignup.html     # signup interface
+├── landing.html         # alternate layout
+├── styles.css           # general styles
+├── stylesignup.css      # signup page styles
+├── landing.css          # landing page-specific styles
+├── script.js            # JS logic and interactions
+</pre>
+
+---
+
+## 🙋‍♂️ About Me
+
+Hey! I’m **Soumya Sagar Nayak**, a CSE student and an aspiring full-stack web developer 💻  
+I’m passionate about crafting clean, modern, and functional web experiences 🌟  
+Always dreaming big and building cool stuff 🚀
+
+---
+
+## 🌐 Connect with Me
+
+- 📧 **Email**: [soumyasagarnayak351@gmail.com](mailto:soumyasagarnayak351@gmail.com)  
+- 💼 **LinkedIn**: [linkedin.com/in/soumya-sagar-nayak-498352295](https://www.linkedin.com/in/soumya-sagar-nayak-498352295)  
+- 💻 **GitHub**: [github.com/SoumyaSagarNayak](https://github.com/SoumyaSagarNayak)  
+- 🧠 **LeetCode**: [leetcode.com/u/icesagar](https://leetcode.com/u/icesagar)  
+- 📗 **GeeksforGeeks**: [geeksforgeeks.org/user/soumsagar](https://www.geeksforgeeks.org/user/soumsagar/)  
+- 🚀 **CodeStudio (Naukri)**: [naukri.com/code360/profile/2203d5b6](https://www.naukri.com/code360/profile/2203d5b6-9aee-449f-897b-a272c92040d5)
