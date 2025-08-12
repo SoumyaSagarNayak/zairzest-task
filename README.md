@@ -13,7 +13,7 @@ A visually captivating and responsive website built as part of the **ZairZest re
 
 ## 📸 Features
 
-- 🎨 **Sleek Design** – Minimal and modern with a nature-inspired color palette  
+- 🎨 **Sleek Design** – Minimal and modern with a nature-inspired color palette . 
 - 🧭 **Responsive Layout** – Optimized for mobile, tablet, and desktop  
 - ⚙️ **Functional Components** – Interactive sections, dropdowns, profile builder & more  
 - 🖼️ **Image Grid & Creator Section** – Showcase of visuals & creators with dynamic UI  
