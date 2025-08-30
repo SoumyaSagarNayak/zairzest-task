@@ -34,7 +34,6 @@ A visually captivating and responsive website built as part of the **ZairZest re
 
 ## 🚀 Getting Started
 
-### 🛠️ Local Development
 
 ```bash
 # Clone the repository
